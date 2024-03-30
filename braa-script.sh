@@ -10,7 +10,9 @@ if [[ -z "$recordFile" ]]; then
     exit 1
 fi
 
-# Function to validate input: both record name and quantity.
+# validate_input(): Validates the given record name and quantity.
+# Input: record name (string), quantity (integer)
+# Output: Returns 0 for success, 1 for error with an error message.
 validate_input() {
     local recordName="$1"
     local quantity="$2"
@@ -30,12 +32,16 @@ validate_input() {
     return 0 # Indicate success.
 }
 
-# Function to log events to a specified log file.
+# log_event(): Logs a given message to the log file with a timestamp.
+# Input: message (string)
+# Output: None. Appends the message to the log file.
 log_event() {
     echo "$(date '+%Y-%m-%d %H:%M:%S') $1" >> "$logFile"
 }
 
-# Function to add or merge records based on user choice.
+# add_record(): Prompts user for record name and quantity, validates input, and decides whether to add a new record or merge with an existing one based on user choice.
+# Input: None, but reads user input during execution.
+# Output: None, but updates the record file and logs the event.
 add_record() {
     echo "Enter record name:"
     read recordName
@@ -89,7 +95,27 @@ add_record() {
     fi
 }
 
-# Function to directly update a record's quantity, now modified to handle direct values for integration.
+# delete_record(): Prompts the user for a record name and deletes it from the record file.
+# Input: None, but reads user input during execution.
+# Output: None, but updates the record file and logs the event.
+delete_record() {
+    echo "Enter record name to delete:"
+    read recordName
+
+    # Checks if the record exists before attempting to delete.
+    if grep -q "^$recordName," "$recordFile"; then
+        sed -i "/^$recordName,/d" "$recordFile" # Deletes the record.
+        echo "Record deleted successfully."
+        log_event "Deleted record: $recordName"
+    else
+        echo "Record does not exist."
+        log_event "Attempted to delete a non-existing record: $recordName"
+    fi
+}
+
+# update_record_quantity(): Directly updates a record's quantity in the record file.
+# Input: record name (string), existing quantity (integer), quantity to add (integer), line number in file (integer)
+# Output: None, but modifies the record file and logs the event.
 update_record_quantity() {
     local recordName="$1"
     local existingQuantity="$2"
@@ -105,7 +131,15 @@ update_record_quantity() {
     log_event "Added quantity to $recordName, New Quantity: $newQuantity"
 }
 
-# Other functions (update_record_name, delete_record, list_records) remain unchanged.
+# list_records(): Displays all records sorted alphabetically.
+# Input: None.
+# Output: Prints all records to the console.
+list_records() {
+    echo "Listing all records:"
+    sort "$recordFile"
+    log_event "Listed all records."
+}
+
 
 # Main menu function to navigate through options.
 main_menu() {
