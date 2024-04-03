@@ -49,7 +49,7 @@ validateRecordName() {
     local recordName="$1"  # The record name to validate.
 
     # Validate that the record name is non-empty and alphanumeric, not starting with a number.
-    if [[ -z "recordName" || ! "recordName" =~ ^[a-zA-Z][a-zA-Z0-9]*$ ]]; then
+    if [[ -z "$recordName" || ! "$recordName" =~ ^[a-zA-Z][a-zA-Z0-9]*$ ]]; then
         echo "Invalid record name. Please use a non-empty string that doesn't start with a number."
         logEvent "Validation" "Failure" "Invalid record name attempted with '$1'"
         return 1
@@ -57,18 +57,20 @@ validateRecordName() {
     return 0
 }
 
+
 # Function to validate record amounts.
 validateRecordAmount() {
     local recordAmount="$1"  # The amount to validate.
 
     # Validate that the amount is a positive integer.
-    if ! [[ "recordAmount" =~ ^[0-9]+$ ]]; then
+    if ! [[ "$recordAmount" =~ ^[0-9]+$ ]]; then
         echo "Invalid amount. Please enter a positive integer."
         logEvent "Invalid amount" "Attempted with '$1'"
         return 1
     fi
     return 0
 }
+
 
 # Function to add a new record into the record file.
 addRecord() {
