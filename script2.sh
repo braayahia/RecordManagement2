@@ -16,9 +16,9 @@ ONE_RECORD_MATCH=1  # A flag to indicate if exactly one record matches during se
 
 # Function to log events with a timestamp.
 logEvent() {
-    eventName="$1"
-    eventOutcome="$2"
-    additionalDetails="$3"
+    local eventName="$1"
+    local eventOutcome="$2"
+    local additionalDetails="$3"
     if [[ -n "$additionalDetails" ]]; then
         # If additional details are provided, include them in the log entry.
         echo "$(date +'%d/%m/%Y %H:%M:%S') - $eventName $eventOutcome $additionalDetails" >> "$LOGFILE"
@@ -27,6 +27,8 @@ logEvent() {
         echo "$(date +'%d/%m/%Y %H:%M:%S') - $eventName $eventOutcome" >> "$LOGFILE"
     fi
 }
+
+
 
 # Function to initialize the environment.
 initialize() {
