@@ -1,0 +1,17 @@
+03/04/2024 03:49:30 - Initialization Success Created record file: flafel
+03/04/2024 03:49:42 - Add Record Success Record humus added
+03/04/2024 03:49:59 - Exit Script Success Script exited
+03/04/2024 03:52:08 - Print Total Amount Success Displayed total amount
+03/04/2024 03:52:16 - Print All Sorted Success All records sorted
+03/04/2024 03:53:00 - Invalid amount Attempted with 'humusalkhwaja'
+03/04/2024 03:53:05 - Print All Sorted Success All records sorted
+03/04/2024 03:53:37 - Validation Failure Invalid record name attempted with 'humus alkhwaja'
+03/04/2024 03:54:08 - Update Record Name Success Record name changed from humus to humusalkhwaja
+03/04/2024 03:54:13 - Print All Sorted Success All records sorted
+03/04/2024 03:54:36 - Update Record Amount Success Amount updated for humusalkhwaja
+03/04/2024 03:54:40 - Print All Sorted Success All records sorted
+03/04/2024 03:54:58 - Invalid amount Attempted with 'e'
+03/04/2024 03:55:06 - Add Record Success Record humus added
+03/04/2024 03:55:14 - Print All Sorted Success All records sorted
+03/04/2024 03:55:26 - Search Record Success Search for hum found matches
+03/04/2024 03:55:58 - Exit Script Success Script exited

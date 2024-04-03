@@ -215,7 +215,7 @@ main() {
             3) searchRecord ;;
             4) updateRecordName ;;
             5) updateRecordAmount ;;
-            6) printRecodsTotalAmount ;;
+            6) printRecordsTotalAmount ;;
             7) printAllSortedRecords ;;
             8) exitScript ;;
             *) echo "Invalid option, please try again." ;;
